@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>
+            Welcome to our website. This page provides information
+            about us and our purpose. We are happy to have you here!
+        </p>
+        <p>
+            <a href="{% url 'home' %}">Go to Home Page</a>
+        </p>
+    </div>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Image Gallery</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'script.js' %}" defer></script>
+</head>
+<body>
+    <h1>My Image Gallery</h1>
+    <div class="gallery">
+        <div class="image-box">
+            <img src="https://picsum.photos/id/1015/300/200" alt="Mountain">
+            <p>Beautiful Mountain</p>
+        </div>
+        <div class="image-box">
+            <img src="https://picsum.photos/id/1016/300/200" alt="Nature">
+            <p>Beautiful Nature</p>
+        </div>
+        <div class="image-box">
+            <img src="https://picsum.photos/id/1025/300/200" alt="Dog">
+            <p>Cute Dog</p>
+        </div>
+    </div>
+    <br>
+    <a href="{% url 'contact' %}">Go to Contact Page</a>
+</body>
+</html>

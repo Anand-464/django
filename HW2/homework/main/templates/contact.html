@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'script.js' %}" defer></script>
+</head>
+<body>
+    <h1>Contact Me</h1>
+    <p>
+        Thank you for visiting my website.
+        You can contact me if you have any questions or suggestions.
+    </p>
+    <button id="thankButton">Click Me</button>
+    <br><br>
+    <a href="{% url 'gallery' %}">Go to Gallery Page</a>
+</body>
+</html>

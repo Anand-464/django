@@ -1,5 +1,5 @@
 """
-URL configuration for todoproject project.
+URL configuration for homework project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from greeting import views
+from main import views
+
 urlpatterns = [
-    path('', views.greeting),
+    path('admin/', admin.site.urls),
+    path('', views.gallery, name='home'),
+    path('gallery/', views.gallery, name='gallery'),
+    path('contact/', views.contact, name='contact'),
+    
 ]
