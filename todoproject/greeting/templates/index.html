@@ -3,10 +3,14 @@
 <head>
 </head>
 <body>
-  {% for obj in my_objects %}
-    <h1>{{ obj.name }}</h1>
-    <p>Age: {{ obj.age }}</p>
-    <p>City: {{ obj.city }}</p>
-   {% endfor %}
+    <h1>Login</h1>
+    <form action="" method="POST">
+      {% csrf_token %}
+        <label>Email</label><br>
+        <input type="email" name="email"><br>
+        <label>Password</label><br>
+        <input type="password" name="password"><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
