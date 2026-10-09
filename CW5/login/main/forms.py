@@ -9,5 +9,5 @@ def validate_not_gmail(value):
             params={'value': value},
         )
 class LoginForm(forms.Form):
-    email = forms.CharField(max_length=100,min_length=10, validators=[validate_email,validate_not_gmail])
-    password = forms.CharField(max_length=50,min_length=6)
+    email = forms.CharField(validators=[validate_email,validate_not_gmail])
+    password = forms.CharField(min_length=6)

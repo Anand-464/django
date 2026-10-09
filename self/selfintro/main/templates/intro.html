@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    
-    {% load static %}
-    <script src="{% static 'alert.js' %}"></script>
-    <title>Self intro</title>
 </head>
 <body>
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">Anand</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Fullstack developer</h6>
-        <p class="card-text">Hello my name is Anand and i am a fullstack developer in python and learning in mashupstack</p>
-
-        <button onclick="alertmsg()">Click</button>
-    </div>
-    </div>
+    <h1>Login</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>Name</label><br>
+        <input type="text" name="name"><br>
+        <label>Email</label><br>
+        <input type="email" name="email"><br>
+        <label>Age</label><br>
+        <input type="text" name="age"><br>
+        <label>Address</label><br>
+        <input type="text" name="address"><br>
+        <input type="submit" value="submit">
+    </form>
 </body>
 </html>
