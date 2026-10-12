@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1>Contact info</h1>
+    {{form.errors}}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>Full name</label><br>
+        <input type="text" name="name"><br>
+        <label>Email</label><br>
+        <input type="email" name="email"><br>
+        <label>Phone number</label><br>
+        <input type="tel" name="phonenumber" pattern="[0-9]{10}" maxlength="10" minlength="10"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
