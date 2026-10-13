@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Filtered Customers</h2>
+<ul>
+  {% for customer in customers %}
+    <li>{{ customer.name }} - {{ customer.email }}</li>
+  {% endfor %}
+</ul>
+</table>
+</body>
+</html>

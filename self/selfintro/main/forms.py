@@ -1,7 +1,7 @@
 from django import forms
-class LoginForm(forms.Form):
+class dataform(forms.Form):
     name = forms.CharField()
-    email = forms.CharField()
-    age = forms.CharField()
-    address = forms.CharField()
+    year = forms.CharField()
+    genre = forms.CharField()
+    rating = forms.CharField()
  

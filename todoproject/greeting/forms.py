@@ -1,4 +1,7 @@
 from django import forms
-class LoginForm(forms.Form):
-    email = forms.CharField(widget=forms.EmailInput)
-    password = forms.CharField(widget=forms.PasswordInput)
+from .models import Customer
+class LoginModelForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = '__all__'
+        

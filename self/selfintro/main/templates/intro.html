@@ -3,17 +3,17 @@
 <head>
 </head>
 <body>
-    <h1>Login</h1>
+    <h1>Movie Data</h1>
     <form action="" method="POST">
         {% csrf_token %}
         <label>Name</label><br>
         <input type="text" name="name"><br>
-        <label>Email</label><br>
-        <input type="email" name="email"><br>
-        <label>Age</label><br>
-        <input type="text" name="age"><br>
-        <label>Address</label><br>
-        <input type="text" name="address"><br>
+        <label>Release year</label><br>
+        <input type="number" name="year" maxlength="4" minlength="4"><br>
+        <label>Genre</label><br>
+        <input type="text" name="genre"><br>
+        <label>Rating</label><br>
+        <input type="number" name="rating"><br>
         <input type="submit" value="submit">
     </form>
 </body>

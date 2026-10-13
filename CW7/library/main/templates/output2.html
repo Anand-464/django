@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Library</h1>
+<table border="1">
+    <tr>
+    <th>title</th>
+    <th>author</th></tr>
+{%for x in data %}
+    <tr>
+    <td>{{x.title}}</td>
+    <td>{{x.author}}</td>
+</tr>
+{%endfor%}
+</table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>customers</h1>
+<table border="1">
+    <tr>
+    <th>email</th>
+    <th>password</th></tr>
+{%for customer in data %}
+    <tr>
+    <td>{{customer.email}}</td>
+    <td>{{customer.password}}</td>
+</tr>
+{%endfor%}
+
+{{list.email}}
+{{list.password}}
+</table>
+</body>
+</html>

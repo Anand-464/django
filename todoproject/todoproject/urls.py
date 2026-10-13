@@ -18,5 +18,6 @@ from django.contrib import admin
 from django.urls import path
 from greeting import views
 urlpatterns = [
-    path('', views.greeting),
+    path('first/', views.greeting),
+    path('second/',views.greeting2)
 ]
