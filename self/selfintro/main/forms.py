@@ -1,7 +1,7 @@
 from django import forms
-class dataform(forms.Form):
-    name = forms.CharField()
-    year = forms.CharField()
-    genre = forms.CharField()
-    rating = forms.CharField()
- 
+from .models import Movies
+class dataform(forms.ModelForm):
+    class Meta:
+        model = Movies
+        fields = '__all__'
+        

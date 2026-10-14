@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from .forms import LoginModelForm
-from .models import Customer
 
 def greeting(request):
     if request.method == 'POST':
@@ -15,10 +14,5 @@ def greeting(request):
         form = LoginModelForm()
     return render(request,'index.html',{'form':form})
 
-def greeting2(request):
-    data = Customer.objects.all()
-    cust = Customer.objects.get(pk=1)
-    return render(request,'index2.html',{
-        'data':data,
-        'list': cust
-    })
+def aboutUs(request):
+    return render(request,'about-us.html')

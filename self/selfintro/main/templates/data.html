@@ -4,6 +4,20 @@
     <title></title>
 </head>
 <body>
-    <p>{{message}}</p>  
+    <p>{{message}}</p> 
+<table border="1">
+    <tr>
+    <th>name</th>
+    <th>year</th>
+    <th>genre</th>
+    <th>rating</th></tr>
+{%for customer in data %}
+    <tr>
+    <td>{{customer.name}}</td>
+    <td>{{customer.year}}</td>
+    <td>{{customer.genre}}</td>
+    <td>{{customer.rating}}</td>
+    </tr>
+{%endfor%}
 </body>
 </html>

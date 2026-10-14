@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
+{% extends 'layout/app-layout.html'%}
+{% block 'content' %}
     <h1>Login</h1>
     <form action="" method="POST">
-            {% csrf_token %}
-        <li>
-        {{ form.as_table }}
-        </li>
+     {% csrf_token %}
+        {{ form }}
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+{% endblock %}
