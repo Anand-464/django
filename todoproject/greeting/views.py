@@ -16,3 +16,7 @@ def greeting(request):
 
 def aboutUs(request):
     return render(request,'about-us.html')
+def pages(request, title):
+    return render(request,'pages.html',{'title':title})
+def count(request, num):
+    return render(request,'count.html',{'num': num})

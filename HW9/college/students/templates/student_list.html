@@ -1,0 +1,15 @@
+
+{% extends 'layout/base.html' %}
+
+{% block 'content' %}
+<h3>{{ message }}</h3>
+<h2>Students</h2>
+
+<ul>
+    {% for student in students %}
+        <li>{{ student }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'home' %}">Return home</a>
+{% endblock %}

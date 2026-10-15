@@ -1,0 +1,6 @@
+{% extends 'layout/base.html' %}
+{% block 'content' %}
+<h3>Select desired page</h3>
+<a href="{% url 'students:list' message='Welcome Students' %}">Students</a>
+<a href="{% url 'teachers:list' message='Welcome Teachers'  %}">Teachers</a>
+{% endblock %}
