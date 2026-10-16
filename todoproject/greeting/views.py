@@ -20,3 +20,9 @@ def pages(request, title):
     return render(request,'pages.html',{'title':title})
 def count(request, num):
     return render(request,'count.html',{'num': num})
+
+def pagevisit(request):
+    count = request.session.get('page_count',0)
+    count +=1
+    request.session['page_count']= count
+    return render(request, 'page_view.html',{'count': count})

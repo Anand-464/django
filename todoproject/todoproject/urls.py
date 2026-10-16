@@ -24,5 +24,7 @@ urlpatterns = [
     path('page/<str:title>/', views.pages, name='page'),
     path('count/<int:num>/', views.count, name='count'),
     path('contactus/', include('contactus.urls')),
-    path('login/', RedirectView.as_view(url='/home/')),  # Redirect to 'home' URL
+    path('login/', RedirectView.as_view(url='/home/')),
+    path('products/', include('products.urls')),
+    path('pagevisit/', views.pagevisit, name='page_visit'),
 ]
