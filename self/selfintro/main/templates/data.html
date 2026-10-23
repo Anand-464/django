@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extend 'layout/base.html' %}
+{% block 'content' %}
     <p>{{message}}</p> 
 <table border="1">
     <tr>
@@ -19,5 +15,4 @@
     <td>{{customer.rating}}</td>
     </tr>
 {%endfor%}
-</body>
-</html>
+{% endblock %}

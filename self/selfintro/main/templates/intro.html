@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
+{% extends 'layout/base.html' %}
+{% block 'content' %}
     <h1>Movie Data</h1>
     <form action="" method="POST">
         {% csrf_token %}
@@ -16,5 +13,4 @@
         <input type="number" name="rating"><br>
         <input type="submit" value="submit">
     </form>
-</body>
-</html>
+{% endblock %}
