@@ -5,7 +5,7 @@
     <tr><th>Product_id</th>
         <th>Product_name</th>
         <th>Product_price</th>
-        <th colspan="2">Update</th>
+        <th colspan="4">Update</th>
     </tr>
         {%for products in product_list%}
     <tr>
@@ -14,6 +14,8 @@
         <td>{{ products.price }}</td>
         <td><a href="{% url 'updateproduct' products.id %}" class="btn btn-success" value="edit" type="submit">Edit</a></td>
         <td><a href="{% url 'deleteproduct' products.id %}" class="btn btn-success" value="edit" type="submit">Delete</a></td>
+        <td><a href="{% url 'generate_pdf' products.id %}" class="btn btn-success" value="edit" type="submit">Pdf</a></td>
+        <td><a href="{% url 'send_product_email' products.id %}" class="btn btn-success" value="edit" type="submit">Email</a></td>
     </tr>
      {% endfor %}
     </table> 
