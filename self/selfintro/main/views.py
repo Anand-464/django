@@ -1,9 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import dataform
 from .models import Movies
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm 
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+
+from rest_framework.decorators import api_view,permission_classes
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import AllowAny
+from .serializers import MovieSerializer
+
 
 def result(request):
     if request.method == 'POST':
@@ -51,3 +58,46 @@ def log_out(request):
         'user': request.user
     }
     return render (request, 'logout.html', context)
+
+
+#create
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def create_mov(request):
+    form= dataform(request.POST)
+    if form.is_valid():
+        movie = form.save()
+        return Response({'id': movie.id}, status=status.HTTP_201_CREATED)
+    return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#read
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def read_mov(request):
+    mov = Movies.objects.all()
+    serializer= MovieSerializer(mov, many= True)
+    return Response(serializer.data)
+
+#update
+@api_view(['PUT'])
+@permission_classes([AllowAny])
+def update_mov(request, pk):
+    movie= get_object_or_404(Movies, pk=pk)
+    form= dataform(request.data, instance=movie)
+    if form.is_valid():
+        form.save()
+        serializer= MovieSerializer(movie)
+        return Response(serializer.data)
+    else:
+        return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#delete
+@api_view(['DELETE'])
+@permission_classes([AllowAny])
+def delete_mov(request, pk):
+    try:
+        movie= Movies.objects.get(pk=pk)
+    except Movies.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    movie.delete()
+    return Response("deleted successfully")

@@ -30,5 +30,6 @@ urlpatterns = [
     path('login/', views.login_page, name= 'login'),
     path('logout/', views.logout_view, name= 'logout'),
     path('productsapi/', include('productsapi.urls')),
+    path('fileupload/', include('filemaker.urls'))
 
 ]

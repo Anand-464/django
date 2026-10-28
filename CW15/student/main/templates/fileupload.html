@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <div class="jumbotron">
+        <h1 class="display-4">File Upload</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {%if error %}
+            <div class="alert">
+                {{error}}
+            </div>
+            {% endif %}
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+            </table>
+            <input type="submit" class="btn btn-primary btn-lg" name="register">
+    </div>
+    </body>
+</html>
