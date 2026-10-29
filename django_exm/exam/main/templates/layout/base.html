@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Tracker</title>
+</head>
+<body>
+    <h1>Weight Loss Management Site</h1>
+    <nav>
+        <a href="{% url 'home' %}">
+            <button type="submit">Home</button>
+        </a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'add_weight' %}">
+            <button type="submit">Add Weight</button>
+        </a>
+        <a href="{% url 'weight_list' %}">
+            <button type="submit">Weight List</button>
+        </a>
+        <a href="{% url 'weight_report' %}">
+            <button type="submit">Weight Report</button>
+        </a>
+        <a href="{% url 'logout' %}">
+            <button type="submit">Logout</button>
+        </a>
+        {% else %}
+        <a href="{% url 'signup' %}">
+            <button type="submit">SignUp</button>
+        </a>
+        <a href="{% url 'login' %}">
+            <button type="submit">LogIn</button>
+        </a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block 'content' %}
+    {% endblock %}
+</body>
+</html>

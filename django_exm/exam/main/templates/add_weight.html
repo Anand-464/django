@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+
+{% block 'content' %}
+{% if messages %}
+    {% for message in messages %}
+        <p style="color: red;">
+            {{ message }}
+        </p>
+    {% endfor %}
+{% endif %}
+
+  <h2>Enter your current weight</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Weight</button>
+  </form>
+{% endblock %}

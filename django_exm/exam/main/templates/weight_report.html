@@ -1,0 +1,54 @@
+{% extends 'layout/base.html' %}
+{% block 'content' %}
+
+<h2>Weight Loss Report</h2>
+<form method="get">
+    <label>Start Date:</label>
+    <input type="date" name="start_date" value="{{ start_date }}" required>
+    <br>
+    <label>End Date:</label>
+    <input type="date" name="end_date" value="{{ end_date }}" required>
+    <br><br>
+    <button type="submit">Calculate</button>
+</form>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<h3>Records in Selected Period</h3>
+<table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <th>Date</th>
+        <th>Weight (kg)</th>
+        <th>Weight Change</th>
+    </tr>
+    {% for item in records %}
+    <tr>
+        <td>{{ item.date }}</td>
+        <td>{{ item.weight }}</td>
+        {% if forloop.first and records|length > 1 %}
+            <td>Starting Weight</td>
+        {% elif forloop.last and records|length > 1 %}
+            {% if weight_loss > 0 %}
+                <td style="color: green; font-weight: bold;">
+                    Loss: {{ weight_loss }} kg
+                </td>
+            {% elif weight_loss < 0 %}
+                <td style="color: red; font-weight: bold;">
+                    Gain: {{ weight_loss|stringformat:"f"|cut:"-" }} kg
+                </td>
+            {% else %}
+                <td>No Change</td>
+            {% endif %}
+        {% else %}
+            <td>-</td>
+        {% endif %}
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No records found for the selected dates.</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

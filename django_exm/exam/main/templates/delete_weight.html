@@ -1,0 +1,17 @@
+{% extends 'layout/base.html' %}
+{% block 'content' %}
+
+<h2>Delete Weight</h2>
+<p>Are you sure you want to delete this record?</p>
+<p>
+    Date: {{ weight_record.date }}<br>
+    Weight: {{ weight_record.weight }} kg
+</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+    <a href="{% url 'weight_list' %}">
+        <button type="button">Cancel</button>
+    </a>
+</form>
+{% endblock %}

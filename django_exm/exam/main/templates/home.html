@@ -1,0 +1,9 @@
+{% extends 'layout/base.html' %}
+{% block 'content' %}
+    {% if user.is_authenticated %}
+        <h2>Welcome, {{ user.username|upper }}!</h2>
+    {% endif %}
+    <h3>Welcome to the Weight Loss Management Site !</h3>
+    <p style="text-indent: 30px">Here you can track your weight loss journey with our help. Feel free to use our tools to set goals, monitor your progress, and stay motivated!. Let the journey begin! If you are a new user, please sign up to get started today.</p>
+
+{% endblock %}
