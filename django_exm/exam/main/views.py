@@ -8,6 +8,7 @@ from .models import Weight_enter
 from .forms import WeightForm
 from django.utils import timezone
 from django.contrib import messages
+from datetime import datetime, timedelta, time
 
 
 def home(request):
@@ -84,7 +85,7 @@ def add_weight(request):
 def weight_list(request):
     weights = Weight_enter.objects.filter(
         user=request.user.username
-    ).order_by('-date', '-weight')
+    ).order_by('date')
     paginator = Paginator(weights, 1)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -102,20 +103,26 @@ def weight_report(request):
     error = None
     if start_date and end_date:
         try:
-            start = timezone.datetime.strptime(
-                start_date, '%Y-%m-%d'
-            ).date()
-            end = timezone.datetime.strptime(
-                end_date, '%Y-%m-%d'
-            ).date()
+            start = datetime.strptime(start_date, '%Y-%m-%d').date()
+            end = datetime.strptime(end_date, '%Y-%m-%d').date()
             if start > end:
                 error = 'Start date must be before end date.'
             elif end > timezone.localdate():
                 error = 'End date cannot be in the future.'
             else:
+                current_timezone = timezone.get_current_timezone()
+                start_datetime = timezone.make_aware(
+                    datetime.combine(start, time.min),
+                    current_timezone
+                )
+                end_datetime = timezone.make_aware(
+                    datetime.combine(end + timedelta(days=1), time.min),
+                    current_timezone
+                )
                 records = Weight_enter.objects.filter(
                     user=request.user.username,
-                    date__date__range=(start, end)
+                    date__gte=start_datetime,
+                    date__lt=end_datetime
                 ).order_by('date')
                 if records.count() >= 2:
                     first_weight = records.first().weight
