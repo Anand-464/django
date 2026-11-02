@@ -85,7 +85,7 @@ def weight_list(request):
     weights = Weight_enter.objects.filter(
         user=request.user.username
     ).order_by('date')
-    paginator = Paginator(weights, 1)
+    paginator = Paginator(weights, 2)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'weight_list.html', {

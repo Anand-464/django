@@ -17,10 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from main import views
+from django.views.generic.base import RedirectView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', RedirectView.as_view(url='/home/')),
+    path('home/', views.home, name='home'),
     path('signup/', views.signup_page, name='signup'),
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_page, name= 'logout'),
@@ -29,4 +32,5 @@ urlpatterns = [
     path('weight_report/', views.weight_report, name='weight_report'),
     path('edit/<int:pk>/', views.edit_weight, name='edit_weight'),
     path('delete/<int:pk>/', views.delete_weight, name='delete_weight'),
+    path('accounts/login/', RedirectView.as_view(url='/home/'))
 ]
